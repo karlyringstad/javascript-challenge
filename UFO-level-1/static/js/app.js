@@ -2,9 +2,10 @@
 // from data.js
 var tableData = data;
 
-
+// Get a reference to the table body
 var tbody = d3.select("tbody");
 
+// Loop through data and append table with new rows to web page
 tableData.forEach((ufoReport) => {
     var row = tbody.append("tr");
     Object.entries(ufoReport).forEach(([key, value]) => {
@@ -42,12 +43,15 @@ function runEnter(){
 
 
     // Search through the date/time column to find rows that match user input
+    // Create an array with just the datetime
     var filteredData = tableData.filter(sightings => sightings.datetime === inputValue);
 
+    // Print the value to the console
     console.log(filteredData);
 
     tbody.html("");
     
+    // Filter data to match user's desired input
     filteredData.forEach((ufoReport) => {
         var row = tbody.append("tr");
         Object.entries(ufoReport).forEach(([key, value]) => {
